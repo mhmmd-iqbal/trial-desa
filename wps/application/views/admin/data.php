@@ -25,9 +25,9 @@
             <button class="btn btn-primary mr-1" data-toggle="modal" href='#modal-id'>
               Add New
             </button>
-            <button class="btn btn-primary mr-1" onclick="window.location.href = '<?=site_url()?>' +'Admin/privilage' ">
+            <!-- <button class="btn btn-primary mr-1" onclick="window.location.href = '<?=site_url()?>' +'Admin/privilage' ">
               Manage Privilage Access
-            </button>
+            </button> -->
           </div>
           <div class="col-lg-12">
             <div class="card">
@@ -40,6 +40,7 @@
                         <th>Admin Name</th>
                         <th>Username</th>
                         <th>Access Level</th>
+                        <th>Status</th>
                         <th>Password</th>
                         <th>Created At</th>
                         <th>Action</th>
@@ -51,7 +52,6 @@
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
           <div class="row form-group">
             <div class="col-lg-3"><label for="">Privilage</label></div>
             <div class="col-lg-9">
-              <select class="select-plugin" id="idPrivilages">
+              <select class="select-plugin" id="idAccess">
                 <option value="" selected="" disabled=""></option>
               </select>
             </div>

@@ -16,12 +16,14 @@ class Welcome extends CI_Controller {
 	public function index(){
 		$data['tittle'] = 'E-DESA | DASHBOARD';
 		$data['view']	= 'dashboard.php';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/dashboard';
+		$this->load->view('iqbal', $data);
 	}
 
 	public function template(){
 		$data['tittle'] = 'Template View';
 		$data['view']	= 'template.php';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/dashboard';
+		$this->load->view('iqbal', $data);
 	}
 }

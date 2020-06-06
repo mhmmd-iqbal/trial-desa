@@ -75,7 +75,7 @@ class ApiStruktural extends CI_Controller {
 			$err   = FALSE;
 		}else{
 			$config['upload_path']          = './assets/upload/';
-		    $config['allowed_types']        = 'pdf';
+		    $config['allowed_types']        = 'jpg|jpeg|png';
 		    $config['file_name']            = time()."_".uniqid();
 		    $config['overwrite']			= true;
 		    $this->load->library('upload', $config);

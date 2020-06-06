@@ -16,14 +16,18 @@ class LayananSurat extends CI_Controller {
 		// print_r($this->session->userdata());
 		$data['tittle'] = 'E-DESA | LAYANAN';
 		$data['view']	= 'layanan/data.php';
-		$data['aksi']	= 'layanan/layanan.js';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/administrasisurat';
+		$this->load->view('iqbal', $data);
 	}
 
 	function add(){
 		$data['tittle'] = 'E-DESA | LAYANAN';
 		$data['view']	= 'layanan/add.php';
-		$data['aksi']	= 'layanan/layanan.js';
-		$this->load->view('mainTemplate', $data);	
+		$data['script']	= 'javascript/administrasisurat';
+		$this->load->view('iqbal', $data);	
+	}
+
+	function kop_surat(){
+		echo "string";
 	}
 }

@@ -87,3 +87,62 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modal-info">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-center" id="head"></h4>
+        </div>
+        <div class="modal-body" id="body">
+          <div class="row">
+            <div class="col-lg-12">
+              
+              <div style="text-align: center; font-size: 16px" id="no-surat-grt">Nomer Surat</div>
+                <br>
+                <p style="text-align: justify; font-size: 16px" id="paragraf-1-grt">Paragraf 1 ...</p>
+                <table class="ml-5 form-group" id="hidden-ket-list-1">
+                  <tbody id="hasil-list-1">
+                  </tbody>
+                </table>
+                <p style="text-align: justify; font-size: 16px" id="paragraf-2-grt">Paragraf 2 ...</p>
+                <table class="ml-5 form-group" id="hidden-ket-list-2">
+                  <tbody id="hasil-list-2">
+                  </tbody>
+                </table>
+                <p style="text-align: justify; font-size: 16px" id="paragraf-3-grt">Paragraf 3 ...</p>
+                <br>
+                <?php 
+                  function bulan(){
+                    $bulan = date('m');
+                    switch ($bulan) {
+                      case '01': return date('d')." Januari ".date('Y'); break;                      
+                      case '02': return date('d')." Februari ".date('Y'); break;                      
+                      case '03': return date('d')." Maret ".date('Y'); break;                      
+                      case '04': return date('d')." April ".date('Y'); break;                      
+                      case '05': return date('d')." Mei ".date('Y'); break;                      
+                      case '06': return date('d')." Juni ".date('Y'); break;                      
+                      case '07': return date('d')." Juli ".date('Y'); break;                      
+                      case '08': return date('d')." Agustus ".date('Y'); break;                      
+                      case '09': return date('d')." September ".date('Y'); break;                      
+                      case '10': return date('d')." Oktober ".date('Y'); break;                      
+                      case '11': return date('d')." November ".date('Y'); break;                      
+                      case '12': return date('d')." Desember ".date('Y'); break;                      
+                    }
+                  }
+                ?>
+                <p>............., <?=bulan() ?></p>
+                <p><span id="jabatan">.......</span> Gampong Rantau Panyang</p>
+                <br>
+                <div style="font-weight: bold;" id="nama-penjabat">NAMA PENJABAT</div>
+                <div>NIP. <span id="nip"> ............</span></div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>

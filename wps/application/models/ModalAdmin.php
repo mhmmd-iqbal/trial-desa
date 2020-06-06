@@ -12,13 +12,14 @@ class ModalAdmin extends CI_Model {
 		$this->load->database();
 	
 	    $this->db->select('admins.id');
-	    $this->db->select('idPrivilages');
-	    $this->db->select('privilages.priviName');
+	    // $this->db->select('idPrivilages');
+	    $this->db->select('access.accessName');
 	    $this->db->select('adminName');
 	    $this->db->select('username');
 	    $this->db->select('passGenerate');
 	    $this->db->select('admins.createdAt');
-		$this->db->join('privilages', 'privilages.id = admins.idPrivilages');
+	    $this->db->select('admins.deletedAt');
+		$this->db->join('access', 'access.id = admins.idAccess');
 	}
 
 	private function _get_datatables_query(){

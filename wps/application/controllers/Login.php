@@ -13,6 +13,7 @@ class Login extends CI_Controller {
 	function logout(){
 		$this->session->sess_destroy();
 		$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-		redirect($actual_link."/edesa");
+		// redirect($actual_link."/edesa");
+		redirect(base_url());
 	}
 }

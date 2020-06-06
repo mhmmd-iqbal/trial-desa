@@ -25,9 +25,9 @@
             <button class="btn btn-primary mr-1"  onclick="window.location.href = '<?=site_url()?>' +'Struktural/add' ">
               Add New
             </button>
-            <button class="btn btn-primary mr-1" onclick="window.location.href = '<?=site_url()?>' +'Struktural/jabatan' ">
+            <!-- <button class="btn btn-primary mr-1" onclick="window.location.href = '<?=site_url()?>' +'Struktural/jabatan' ">
               Manage Data Jabatan
-            </button>
+            </button> -->
           </div>
           <div class="col-lg-12">
             <div class="card">

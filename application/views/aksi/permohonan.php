@@ -3,12 +3,12 @@
 		event.preventDefault();
 		let halaman = $(this).data('target')
 		$.ajax({
-			url: siteurl+'Welcome/post_halaman',
+			url: siteurl+'surat/post_halaman',
 			type: 'POST',
 			dataType: 'JSON',
 			data: {halaman: halaman},
 			success: function(res){
-				window.location.href = siteurl
+				window.location.href = siteurl+'surat'
 			}
 		})
 	});

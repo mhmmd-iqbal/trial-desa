@@ -21,7 +21,18 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-5">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h5 class="text-center">Kata Sambutan Kepala Desa</h5>
+            </div>
+            <div class="card-body" style="text-align: justify;" id="show_sambutan"></div>
+            <div class="card-footer text-right">
+              <button class="btn btn-info" id="btn-sambutan"><i class="fa fa-gear"></i> Perbarui Kata Sambutan</button>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-7">
             <div class="card">
               <div class="card-header">
                 <div class="row">
@@ -68,7 +79,7 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <table class="table"id="table-misi">
+                <table class="table" id="table-misi">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -87,3 +98,24 @@
     </div>
     <!-- /.content -->
   </div>
+
+<div class="modal fade" id="modal-sambutan">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Perbarui Kata Sambutan</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <textarea name="" class="form-control" id="sambutan" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="simpan-sambutan">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>

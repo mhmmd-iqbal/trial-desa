@@ -37,7 +37,7 @@ class MyModel extends CI_Model{
 		$this->session->unset_userdata('list_akses');
 		$id = $this->session->userdata('akses');
 		$this->db->where(['id' => $id]);
-	 	$list_akses = $this->db->get('privilages')->row_array();
+	 	$list_akses = $this->db->get('access')->row_array();
 		$this->session->set_userdata('list_akses', $list_akses);
 	}
 }

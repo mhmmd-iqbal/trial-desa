@@ -10,15 +10,14 @@ class ModalLayananSurat extends CI_Model {
 	public function __construct(){
 		parent::__construct();
 		$this->load->database();
-	
+	}
+
+	private function _get_datatables_query(){
 	    $this->db->select('surats.id');
 	    $this->db->select('surats.nmSurat');
 	    $this->db->select('admins.username');
 	    $this->db->select('surats.createdAt');
 		$this->db->join('admins', 'admins.id = surats.idAdmin');
-	}
-
-	private function _get_datatables_query(){
 		$this->db->from($this->table);	
 		$i = 0;
 		foreach ($this->column_search as $item) {
@@ -61,5 +60,30 @@ class ModalLayananSurat extends CI_Model {
 	public function count_all(){
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
+	}
+
+	function info_surat($id){
+		$this->db->select([
+			'surats.nmSurat',
+			'surats.createdAt',
+			'surats.noSurat',
+			'surats.paragraf1',
+			'surats.paragraf2',
+			'surats.paragraf3',
+			'perangkats.nama',
+			'perangkats.jabatan',
+			'perangkats.nip',
+		]);
+		$this->db->from($this->table);
+		$this->db->join('perangkats', 'perangkats.id = surats.idPerangkat');
+		$this->db->where('surats.id', $id);
+		return $this->db->get()->row_array();
+	}
+
+	function list_surat($id, $list){
+		$this->db->select('keterangan');
+		$this->db->from($list);
+		$this->db->where('idSurat', $id);
+		return $this->db->get()->result_array();
 	}
 }

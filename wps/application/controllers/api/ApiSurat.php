@@ -68,7 +68,7 @@ class ApiSurat extends CI_Controller {
 			$row[] = $field->nmSurat;
 			$row[] = $field->username;
 			$row[] = $field->createdAt;
-			$row[] = '<button class="btn btn-sm btn-info m-1 info" value="'.$field->id.'"><i class="fa fa-user"></i></button>'.'<button class="btn btn-sm btn-success m-1 update" value="'.$field->id.'"><i class="fa fa-pencil-square-o"></i></button>'.'<button class="btn btn-sm btn-danger m-1 delete" value="'.$field->id.'"><i class="fa fa-trash-o"></i></button>';
+			$row[] = '<button class="btn btn-sm btn-info m-1 info" value="'.$field->id.'"><i class="fa fa-exclamation-triangle"></i></button>'.'<button class="btn btn-sm btn-success m-1 update" value="'.$field->id.'"><i class="fa fa-pencil-square-o"></i></button>'.'<button class="btn btn-sm btn-danger m-1 delete" value="'.$field->id.'"><i class="fa fa-trash-o"></i></button>';
 			$data[] = $row;
 		}
 
@@ -79,5 +79,13 @@ class ApiSurat extends CI_Controller {
 			"data" => $data,
 		);
 		echo json_encode($output);
+	}
+
+	function infoSurat($id){
+		$this->load->model('ModalLayananSurat');
+		$hasil = $this->ModalLayananSurat->info_surat($id);
+		$hasil['list1'] = $this->ModalLayananSurat->list_surat($id, 'list1');
+		$hasil['list2'] = $this->ModalLayananSurat->list_surat($id, 'list2');
+		echo json_encode($hasil);
 	}
 }

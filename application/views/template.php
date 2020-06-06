@@ -27,7 +27,7 @@
       <div class="container">
         <div class="row no-gutters d-flex align-items-center align-items-stretch">
           <div class="col-md-4 d-flex align-items-center py-4">
-            <a class="navbar-brand" href="index.html">Consolution</a>
+            <a class="navbar-brand" href="index.html">SINAR DESA</a>
           </div>
         </div>
       </div>
@@ -45,29 +45,19 @@
         </form>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="index.html" class="nav-link pl-0">Beranda</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">Tentang Desa</a></li>
-            <li class="nav-item"><a href="services.html" class="nav-link">Berita</a></li>
-            <li class="nav-item"><a href="project.html" class="nav-link">Dokumentasi</a></li>
-            <li class="nav-item <?=$active = 'permohonan' ? 'active' : '' ?> "><a href="blog.html" class="nav-link">Permohonan Surat</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li 
+              class="nav-item <?=$active == 'dashboard' ? 'active': ''?>" 
+              id="dashboard"><a href="<?=base_url()?>" class="nav-link pl-0">Beranda</a></li>
+            <li class="nav-item" id="about"><a href="about.html" class="nav-link">Tentang Desa</a></li>
+            <li class="nav-item <?=$active == 'berita' ? 'active': ''?>" id="berita"><a href="services.html" class="nav-link">Berita</a></li>
+            <li class="nav-item" id="dokumentasi"><a href="project.html" class="nav-link">Dokumentasi</a></li>
+            <li class="nav-item <?=$active == 'surat' ? 'active': ''?>" id="surat"><a href="<?=base_url('surat')?>" class="nav-link">Permohonan Surat</a></li>
+            <li class="nav-item" id="contact"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- END nav -->
-    
-   <!--  <section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url()?>assets/template/images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Blog</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
-        </div>
-      </div>
-    </section> -->
+
 
     <?php $this->load->view($view); ?>
     
@@ -182,5 +172,10 @@
       const siteurl = "<?php print site_url(); ?>";
   </script>
   <?php $this->load->view($aksi) ?>
+  <script>
+    var active  = '<?=$active?>'
+    // var halaman = document.getElementById(active);
+    // halaman.classList.add("active");
+  </script>
   </body>
 </html>

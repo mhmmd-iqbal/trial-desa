@@ -12,6 +12,43 @@ $(document).ready(function() {
 
 	dataVisi()
 	dataMisi()
+
+	show_sambutan()
+
+	$('#btn-sambutan').on('click', function() {
+		$('#modal-sambutan').modal('toggle')
+	});
+
+	$('#simpan-sambutan').on('click', function() {
+		let sambutan = $('#sambutan').val()
+		$.ajax({
+			url: siteurl+'index.php/api/ApiInformasiUmum/add_sambutan',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {sambutan: sambutan},
+			success: function(res){
+				$('#modal-sambutan').modal('toggle')
+				$('#sambutan').val('')
+				show_sambutan()
+				toaster(res.header, res.msg, res.icon)
+			},error: function(){
+				toaster('gagal', 'Internal Error Found !', 'error')	
+			}
+		})
+	});
+
+	function show_sambutan(){
+		$.ajax({
+			url: siteurl+'index.php/api/ApiInformasiUmum/show_sambutan',
+			type: 'GET',
+			dataType: 'JSON',
+			success: function(res){
+				if(res){
+					$('#show_sambutan').html(res.sambutan)
+				}
+			}
+		})		
+	}
 })
 
 function visi(){

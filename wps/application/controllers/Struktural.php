@@ -15,21 +15,21 @@ class Struktural extends CI_Controller {
 	function index(){
 		$data['tittle'] = 'E-DESA | JABATAN';
 		$data['view']	= 'struktural/data.php';
-		$data['aksi']	= 'struktural/struktural.js';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/struktural';
+		$this->load->view('iqbal', $data);
 	}
 
 	function add(){
 		$data['tittle'] = 'E-DESA | JABATAN';
 		$data['view']	= 'struktural/add.php';
-		$data['aksi']	= 'struktural/struktural.js';
-		$this->load->view('mainTemplate', $data);	
+		$data['script']	= 'javascript/struktural';
+		$this->load->view('iqbal', $data);	
 	}
 
 	function jabatan(){
 		$data['tittle'] = 'E-DESA | JABATAN';
 		$data['view']	= 'struktural/jabatan.php';
-		$data['aksi']	= 'struktural/jabatan.js';
-		$this->load->view('mainTemplate', $data);	
+		$data['script']	= 'javascript/jabatan';
+		$this->load->view('iqbal', $data);	
 	}
 }

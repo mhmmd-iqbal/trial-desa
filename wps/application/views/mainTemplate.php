@@ -393,7 +393,7 @@ to get the desired effect
             if($akses['m4m1']) :
           ?>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="<?=site_url('InformasiUmum')?>" class="nav-link">
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
                 Informasi Umum
@@ -675,6 +675,7 @@ to get the desired effect
 <script src="<?=base_url()?>assets/toaster/jquery.toast.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="<?=base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
 <script src="<?=base_url('assets/datatables/responsive/js/dataTables.responsive.min.js')?>"></script>
 <script src="<?=base_url()?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>

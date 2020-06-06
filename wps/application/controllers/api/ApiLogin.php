@@ -10,30 +10,36 @@ class ApiLogin extends CI_Controller {
 	function login(){
 		$username    = $this->input->post('username');
 		$pass 		 = $this->input->post('password'); 
-		$this->db->where(array('username' => $username));
+		$this->db->where(array('username' => $username, 'deletedAt' => NULL));
 		$this->db->select('pass');
 		$this->db->select('id');
-		$this->db->select('idPrivilages');
+		$this->db->select('idAccess');
 		$admins = $this->db->get('admins')->row_array();
-		$pass_encrypt = $admins['pass'];
-		$login = $this->hash_password_decrypt($pass, $pass_encrypt);	
-		if($login == TRUE){
-			$response = array(
-				'idAdmin' 	=> $admins['id'],
-				'akses' 	=> $admins['idPrivilages'],
-				'username' 	=> $username,
-				'login'		=> TRUE 
-			);
-			$this->session->set_userdata($response);
-			$data = [
-				'ipaddress'	=> $this->getUserIpAddr(),
-				'username'	=> $username
-			];
-			$this->MyModel->action('input', 'logs', $data);
+		if($admins > 0){
+			$pass_encrypt = $admins['pass'];
+			$login = $this->hash_password_decrypt($pass, $pass_encrypt);
+			if($login == TRUE){
+				$response = array(
+					'idAdmin' 	=> $admins['id'],
+					'akses' 	=> $admins['idAccess'],
+					'username' 	=> $username,
+					'login'		=> TRUE 
+				);
+				$this->session->set_userdata($response);
+				$data = [
+					'ipaddress'	=> $this->getUserIpAddr(),
+					'username'	=> $username
+				];
+				$this->MyModel->action('input', 'logs', $data);
+			}else{
+				$response = array(
+					'login'		=> FALSE
+				);
+			}
 		}else{
-			$response = array(
+			$response = [
 				'login'		=> FALSE
-			);
+			];
 		}
 		echo json_encode($response);
 	}

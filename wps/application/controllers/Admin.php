@@ -15,14 +15,14 @@ class Admin extends CI_Controller {
 	function index(){
 		$data['tittle'] = 'E-DESA | ADMIN';
 		$data['view']	= 'admin/data.php';
-		$data['aksi']	= 'admin/admin.js';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/admin';
+		$this->load->view('iqbal', $data);
 	}
 
-	function privilage(){
+	public function privilage(){
 		$data['tittle'] = 'E-DESA | ADMIN';
 		$data['view']	= 'admin/privilage.php';
-		$data['aksi']	= 'admin/privilage.js';
-		$this->load->view('mainTemplate', $data);	
+		$data['script']	= 'javascript/privilage';
+		$this->load->view('iqbal', $data);	
 	}
 }

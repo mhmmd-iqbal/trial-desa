@@ -84,7 +84,8 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th colspan="4" style="text-align: center;" >Master Data</th>
+                  <th colspan="4" style="text-align: center;" >
+                  Daftar Hak Akses Menu</th>
                 </tr>
               </thead>
               <tbody>
@@ -95,220 +96,121 @@
                   <th>Akses Penuh</th>
                 </tr>
                 <tr>
-                  <td>Data Admin</td>
+                  <td>Admin</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-admin1" name="data-admin" value="1" checked>
-                      <label for="data-admin1">
+                      <input type="radio" id="admin1" name="admin" value="1" checked>
+                      <label for="admin1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-admin2" name="data-admin" value="2">
-                      <label for="data-admin2">
+                      <input type="radio" id="admin2" name="admin" value="2">
+                      <label for="admin2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-admin3" name="data-admin" value="3">
-                      <label for="data-admin3">
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Data Struktural Jabatan</td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-struktural1" name="data-struktural" value="1" checked>
-                      <label for="data-struktural1">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-struktural2" name="data-struktural" value="2">
-                      <label for="data-struktural2">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-struktural3" name="data-struktural" value="3">
-                      <label for="data-struktural3">
+                      <input type="radio" id="admin3" name="admin" value="3">
+                      <label for="admin3">
                       </label>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>Data Penduduk</td>
+                  <td>Struktural</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-penduduk1" name="data-penduduk" value="1" checked>
-                      <label for="data-penduduk1">
+                      <input type="radio" id="struktural1" name="struktural" value="1" checked>
+                      <label for="struktural1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-penduduk2" name="data-penduduk" value="2">
-                      <label for="data-penduduk2">
+                      <input type="radio" id="struktural2" name="struktural" value="2">
+                      <label for="struktural2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-penduduk3" name="data-penduduk" value="3">
-                      <label for="data-penduduk3">
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Data Kategori Informasi</td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-kategori1" name="data-kategori" value="1" checked>
-                      <label for="data-kategori1">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-kategori2" name="data-kategori" value="2">
-                      <label for="data-kategori2">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-kategori3" name="data-kategori" value="3">
-                      <label for="data-kategori3">
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-              <thead>
-                <tr>
-                  <th colspan="4" style="text-align: center;" >Data Desa</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Menu Akses</th>
-                  <th>Batasi Akses</th>
-                  <th>Hanya Melihat</th>
-                  <th>Akses Penuh</th>
-                </tr>
-                <tr>
-                  <td>Struktur Organisasi</td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="struktur-organisasi1" name="struktur-organisasi" value="1" checked>
-                      <label for="struktur-organisasi1">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="struktur-organisasi2" name="struktur-organisasi" value="2">
-                      <label for="struktur-organisasi2">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="struktur-organisasi3" name="struktur-organisasi" value="3">
-                      <label for="struktur-organisasi3">
+                      <input type="radio" id="struktural3" name="struktural" value="3">
+                      <label for="struktural3">
                       </label>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>Visi dan Misi</td>
+                  <td>Kependudukan</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="visi-misi1" name="visi-misi" value="1" checked>
-                      <label for="visi-misi1">
+                      <input type="radio" id="kependudukan1" name="kependudukan" value="1" checked>
+                      <label for="kependudukan1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="visi-misi2" name="visi-misi" value="2">
-                      <label for="visi-misi2">
+                      <input type="radio" id="kependudukan2" name="kependudukan" value="2">
+                      <label for="kependudukan2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="visi-misi3" name="visi-misi" value="3">
-                      <label for="visi-misi3">
+                      <input type="radio" id="kependudukan3" name="kependudukan" value="3">
+                      <label for="kependudukan3">
                       </label>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>Potensi Desa</td>
+                  <td>Profile Desa</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="potensi-desa1" name="potensi-desa" value="1" checked>
-                      <label for="potensi-desa1">
+                      <input type="radio" id="profile1" name="profile" value="1" checked>
+                      <label for="profile1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="potensi-desa2" name="potensi-desa" value="2">
-                      <label for="potensi-desa2">
+                      <input type="radio" id="profile2" name="profile" value="2">
+                      <label for="profile2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="potensi-desa3" name="potensi-desa" value="3">
-                      <label for="potensi-desa3">
+                      <input type="radio" id="profile3" name="profile" value="3">
+                      <label for="profile3">
                       </label>
                     </div>
                   </td>
                 </tr>
-              </tbody>
-              <thead>
                 <tr>
-                  <th colspan="4" style="text-align: center;" >Administrasi Surat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Menu Akses</th>
-                  <th>Batasi Akses</th>
-                  <th>Hanya Melihat</th>
-                  <th>Akses Penuh</th>
-                </tr>
-                <tr>
-                  <td>Layanan Surat Desa</td>
+                  <td>Administrasi Surat</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="layanan-surat1" name="layanan-surat" value="1" checked>
-                      <label for="layanan-surat1">
+                      <input type="radio" id="administrasi1" name="administrasi" value="1" checked>
+                      <label for="administrasi1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="layanan-surat2" name="layanan-surat" value="2">
-                      <label for="layanan-surat2">
+                      <input type="radio" id="administrasi2" name="administrasi" value="2">
+                      <label for="administrasi2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="layanan-surat3" name="layanan-surat" value="3">
-                      <label for="layanan-surat3">
+                      <input type="radio" id="administrasi3" name="administrasi" value="3">
+                      <label for="administrasi3">
                       </label>
                     </div>
                   </td>
@@ -317,131 +219,70 @@
                   <td>Verifikasi Surat</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="verifikasi-surat1" name="verifikasi-surat" value="1" checked>
-                      <label for="verifikasi-surat1">
+                      <input type="radio" id="verifikasi1" name="verifikasi" value="1" checked>
+                      <label for="verifikasi1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="verifikasi-surat2" name="verifikasi-surat" value="2">
-                      <label for="verifikasi-surat2">
+                      <input type="radio" id="verifikasi2" name="verifikasi" value="2">
+                      <label for="verifikasi2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="verifikasi-surat3" name="verifikasi-surat" value="3">
-                      <label for="verifikasi-surat3">
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Data Administrasi Surat</td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-adm-surat1" name="data-adm-surat" value="1" checked>
-                      <label for="data-adm-surat1">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-adm-surat2" name="data-adm-surat" value="2">
-                      <label for="data-adm-surat2">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="data-adm-surat3" name="data-adm-surat" value="3">
-                      <label for="data-adm-surat3">
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-              <thead>
-                <tr>
-                  <th colspan="4" style="text-align: center;" >Layanan Informasi Desa</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Menu Akses</th>
-                  <th>Batasi Akses</th>
-                  <th>Hanya Melihat</th>
-                  <th>Akses Penuh</th>
-                </tr>
-                <tr>
-                  <td>Informasi Umum</td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="informasi-umum1" name="informasi-umum" value="1" checked>
-                      <label for="informasi-umum1">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="informasi-umum2" name="informasi-umum" value="2">
-                      <label for="informasi-umum2">
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="icheck-primary d-inline">
-                      <input type="radio" id="informasi-umum3" name="informasi-umum" value="3">
-                      <label for="informasi-umum3">
+                      <input type="radio" id="verifikasi3" name="verifikasi" value="3">
+                      <label for="verifikasi3">
                       </label>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>Photo dan Galeri</td>
+                  <td>Informasi Desa</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="photo-galeri1" name="photo-galeri" value="1" checked>
-                      <label for="photo-galeri1">
+                      <input type="radio" id="informasi1" name="informasi" value="1" checked>
+                      <label for="informasi1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="photo-galeri2" name="photo-galeri" value="2">
-                      <label for="photo-galeri2">
+                      <input type="radio" id="informasi2" name="informasi" value="2">
+                      <label for="informasi2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="photo-galeri3" name="photo-galeri" value="3">
-                      <label for="photo-galeri3">
+                      <input type="radio" id="informasi3" name="informasi" value="3">
+                      <label for="informasi3">
                       </label>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>Dokumen Lainnya</td>
+                  <td>Open Data</td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="dokumen1" name="dokumen" value="1" checked>
-                      <label for="dokumen1">
+                      <input type="radio" id="opendata1" name="opendata" value="1" checked>
+                      <label for="opendata1">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="dokumen2" name="dokumen" value="2">
-                      <label for="dokumen2">
+                      <input type="radio" id="opendata2" name="opendata" value="2">
+                      <label for="opendata2">
                       </label>
                     </div>
                   </td>
                   <td>
                     <div class="icheck-primary d-inline">
-                      <input type="radio" id="dokumen3" name="dokumen" value="3">
-                      <label for="dokumen3">
+                      <input type="radio" id="opendata3" name="opendata" value="3">
+                      <label for="opendata3">
                       </label>
                     </div>
                   </td>
@@ -451,7 +292,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" id="batal" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-primary submit"></button>
         </div>
       </div>

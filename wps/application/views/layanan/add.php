@@ -54,7 +54,7 @@
                <div class="row pb-2">
                  <div class="col-lg-3">Isi Paragraf Pertama</div>
                  <div class="col-lg-9">
-                   <textarea name="" id="paragraf-1" cols="30" rows="5" class="form-control"></textarea>
+                   <textarea name="" id="paragraf-1" cols="30" rows="5" class="form-control textarea"></textarea>
                  </div>
                </div>
                <div class="row pb-2">
@@ -72,7 +72,7 @@
                <div class="row pb-2">
                  <div class="col-lg-3">Isi Paragraf Kedua</div>
                  <div class="col-lg-9">
-                   <textarea name="" id="paragraf-2" cols="30" rows="5" class="form-control"></textarea>
+                   <textarea name="" id="paragraf-2" cols="30" rows="5" class="form-control textarea"></textarea>
                  </div>
                </div>
                <div class="row pb-2">
@@ -90,7 +90,7 @@
                <div class="row pb-2">
                  <div class="col-lg-3">Isi Paragraf Ketiga</div>
                  <div class="col-lg-9">
-                   <textarea name="" id="paragraf-3" cols="30" rows="5" class="form-control"></textarea>
+                   <textarea name="" id="paragraf-3" cols="30" rows="5" class="form-control textarea"></textarea>
                  </div>
                </div>
               </div>

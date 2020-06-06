@@ -15,14 +15,27 @@ class Penduduk extends CI_Controller {
 	function index(){
 		$data['tittle'] = 'E-DESA | PENDUDUK';
 		$data['view']	= 'penduduk/data.php';
-		$data['aksi']	= 'penduduk/penduduk.js';
-		$this->load->view('mainTemplate', $data);
+		$data['script']	= 'javascript/penduduk';
+		$this->load->view('iqbal', $data);
 	}
 
 	function add(){
 		$data['tittle'] = 'E-DESA | PENDUDUK';
 		$data['view']	= 'penduduk/add.php';
-		$data['aksi']	= 'penduduk/penduduk.js';
-		$this->load->view('mainTemplate', $data);	
+		$data['script']	= 'javascript/penduduk';
+		$this->load->view('iqbal', $data);	
 	}
+
+	function dusun(){
+		echo "string";
+	}
+
+	function profesi(){
+		echo "string";
+	}
+
+	function kk(){
+		echo "string";
+	}
+
 }

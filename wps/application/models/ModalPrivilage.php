@@ -2,10 +2,10 @@
 
 class ModalPrivilage extends CI_Model {
 
-	var $table = 'privilages'; //nama tabel dari database
-	var $column_order = array(null, 'priviName','createdAt','active'); 
-	var $column_search = array('priviName'); //field yang diizin untuk pencarian 
-	var $order = array('createdAt' => 'asc'); // default order 
+	var $table = 'access'; //nama tabel dari database
+	var $column_order = array(null, 'accessName','created_at','activated'); 
+	var $column_search = array('accessName'); //field yang diizin untuk pencarian 
+	var $order = array('created_at' => 'asc'); // default order 
 
 	public function __construct(){
 		parent::__construct();
@@ -73,9 +73,9 @@ class ModalPrivilage extends CI_Model {
 	} 
 
 	public function get_select2_data(){
-		$this->db->where(['active' => '1']);
+		$this->db->where(['activated' => '1']);
 		$this->db->select('id');
-		$this->db->select('priviName');
+		$this->db->select('accessName');
 		return $this->db->get($this->table);
 	}
 }

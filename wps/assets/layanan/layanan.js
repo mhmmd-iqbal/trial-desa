@@ -1,3 +1,47 @@
+$(document).ready(function() {
+	$(function () {
+	    $('#paragraf-1').summernote({
+	    	tabsize: 2,
+	        height: 300,
+			callbacks: {
+		    	onKeyup: function(e) {
+		      	// $("#result").html($('.description').val());
+			      	console.log($('#paragraf-1').val())
+					$('#paragraf-1-grt').html($('#paragraf-1').val())
+			    }
+			}
+	    })
+	})
+
+	$(function () {
+	    $('#paragraf-2').summernote({
+	    	tabsize: 2,
+	        height: 300,
+			callbacks: {
+		    onKeyup: function(e) {
+		      // $("#result").html($('.description').val());
+			      console.log($('#paragraf-2').val())
+					$('#paragraf-2-grt').html($('#paragraf-2').val())
+			    }
+			}
+	    })
+	})
+
+	$(function () {
+	    $('#paragraf-3').summernote({
+	    	tabsize: 2,
+	        height: 300,
+			callbacks: {
+		    onKeyup: function(e) {
+		      // $("#result").html($('.description').val());
+		      		console.log($('#paragraf-3').val())
+					$('#paragraf-3-grt').html($('#paragraf-3').val())
+			    }
+			}
+	    })
+	})
+})
+
 const date = new Date()
 $('#nama-surat').on('keyup', function(event) {
 	event.preventDefault();
@@ -13,6 +57,7 @@ $('#paragraf-1').on('keyup', function(event) {
 	event.preventDefault();
 	$('#paragraf-1-grt').html($('#paragraf-1').val())
 });
+
 var first_list = 0
 $('#add-list-1').on('click', function(){
 	$('#hidden-ket-list-1').removeAttr('hidden')
@@ -225,3 +270,40 @@ function showData(){
 
     });
 }
+
+$('#table').on('click', '.info', function(event) {
+	event.preventDefault();
+	let value = $(this).val()
+	$.ajax({
+		url: siteurl+'index.php/api/ApiSurat/infoSurat/'+value,
+		type: 'GET',
+		dataType: 'JSON',
+		success: function(res){
+			if(res){
+				console.log(res)
+				$('#head').html(res.nmSurat)
+				$('#no-surat-grt').html('No: ..../'+res.noSurat+'/'+Romawi(date.getMonth()+1)+'/'+date.getFullYear())
+				$('#paragraf-1-grt').html(res.paragraf1)
+				$.each(res.list1, function(i, d) {
+					$('#hasil-list-1').append('<tr id="">'+
+			            '<td width="150px" id="">'+d.keterangan+'</td>'+
+			            '<td> :</td>'+
+			      	'</tr>')					
+				});
+				$('#paragraf-2-grt').html(res.paragraf2)
+				$.each(res.list2, function(i, d) {
+					$('#hasil-list-2').append('<tr id="">'+
+			            '<td width="150px" id="">'+d.keterangan+'</td>'+
+			            '<td> :</td>'+
+			      	'</tr>')					
+				});
+				$('#paragraf-3-grt').html(res.paragraf3)
+				$('#jabatan').html(res.jabatan)
+			    $('#nama-penjabat').html(res.nama)
+			    $('#nip').html(res.nip)
+				$('#modal-info').modal('toggle')
+			}
+		}		
+	})
+});
+
