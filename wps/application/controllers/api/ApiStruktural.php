@@ -7,6 +7,28 @@ class ApiStruktural extends CI_Controller {
 		$this->load->model('MyModel');
 	}
 	
+	function disable_kategori($id){
+		$this->db->where(['id' => $id]);
+		if($this->db->update('jabatans', ['status' => FALSE]) === TRUE){
+			$res = ['err' => FALSE];
+		}else{
+			$res = ['err' => TRUE];
+			$res = $this->db->error();
+		}
+		echo json_encode($res);
+	}
+
+	function enable_kategori($id){
+		$this->db->where(['id' => $id]);
+		if($this->db->update('jabatans', ['status' => TRUE]) === TRUE){
+			$res = ['err' => FALSE];
+		}else{
+			$res = ['err' => TRUE];
+			$res = $this->db->error();
+		}
+		echo json_encode($res);
+	}
+
 	function addJabatan(){
 		$data = array(
 			'id'		=> uniqid(),
@@ -26,7 +48,7 @@ class ApiStruktural extends CI_Controller {
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $field) {
-			$button = $field->status == '1' ? '<button class="btn btn-sm btn-danger m-1">Non Aktifkan</button>' : '<button class="btn btn-sm btn-primary m-1">Aktifkan</button>';
+			$button = $field->status == '1' ? '<button class="btn btn-sm btn-danger m-1 off" value="'.$field->id.'">Non Aktifkan</button>' : '<button class="btn btn-sm btn-primary m-1 on" value="'.$field->id.'">Aktifkan</button>';
 			$no++;
 			$row = array();
 			$row[] = $no;
@@ -140,6 +162,88 @@ class ApiStruktural extends CI_Controller {
 		}
 	}
 
+	function updateData($id){
+		$err = FALSE;
+		$jabatan 	  = $this->input->post('jabatan');
+		$nama 		  = $this->input->post('nama');
+		$nip 		  = $this->input->post('nip');
+		$jenisKelamin = $this->input->post('jenisKelamin');
+		$agama 		  = $this->input->post('agama');
+		$tmpLahir 	  = $this->input->post('tmpLahir');
+		$tglLahir 	  = $this->input->post('tglLahir');
+		$noHp 	 	  = $this->input->post('noHp');
+		$alamat 	  = $this->input->post('alamat');
+		$statusAnggota= $this->input->post('statusAnggota');
+		$where 		  = ['id' => $id];
+		if($_FILES['gambar']['name'] != ''){
+			$config['upload_path']          = './assets/upload/';
+		    $config['allowed_types']        = 'jpg|jpeg|png';
+		    $config['file_name']            = time()."_".uniqid();
+		    $config['overwrite']			= true;
+		    $this->load->library('upload', $config);
+		    $do_upload = $this->upload->do_upload('gambar');
+
+		    if(!$do_upload){
+		    	$res = array(
+					'header' => 'Gagal Menyimpan Gambar',
+					'msg' 	 => $this->upload->display_errors(),
+					'icon'	 => 'error',
+					'err'	 => TRUE 
+				);	
+				$err = TRUE;	
+		    }else{
+		    	$data_gmb = $this->upload->data();  
+                $config['image_library'] = 'gd2';  
+                $config['source_image'] = './assets/upload/'.$data_gmb["file_name"];  
+                $config['create_thumb'] = FALSE;  
+                $config['maintain_ratio'] = TRUE;  
+                $config['quality'] = '50%';  
+                $config['width'] = 500;  
+                $config['new_image'] = './assets/upload/'.$data_gmb["file_name"];  
+                $this->load->library('image_lib', $config);  
+                $this->image_lib->resize();
+
+                $photo = $data_gmb['file_name'];
+				$err = FALSE;	
+				$data = array(
+					'jabatan'		=> $jabatan,
+					'nip'			=> $nip,
+					'nama'			=> $nama,
+					'jenisKelamin' 	=> $jenisKelamin,
+					'tmpLahir'		=> $tmpLahir,
+					'tglLahir'		=> $tglLahir,
+					'noHp'			=> $noHp,
+					'agama'			=> $agama,
+					'alamat'		=> $alamat,
+					'statusAnggota' => $statusAnggota,
+					'photo'			=> $photo,
+					'updatedAt'		=> date('Y-m-d h:i:s'),
+				);
+		    }
+		}else{
+			$data = array(
+				'jabatan'		=> $jabatan,
+				'nip'			=> $nip,
+				'nama'			=> $nama,
+				'jenisKelamin' 	=> $jenisKelamin,
+				'tmpLahir'		=> $tmpLahir,
+				'tglLahir'		=> $tglLahir,
+				'noHp'			=> $noHp,
+				'agama'			=> $agama,
+				'alamat'		=> $alamat,
+				'statusAnggota' => $statusAnggota,
+				'updatedAt'		=> date('Y-m-d h:i:s'),
+			);
+		}
+
+		if($err == TRUE){
+			echo json_encode($res);
+		}else{
+			$res = $this->MyModel->updateData('perangkats', $data, $where);
+			echo json_encode($res);
+		}
+	}
+
 	function getStrukturals(){
 		$this->load->model('ModalStruktural');
 		$list = $this->ModalStruktural->get_datatables();
@@ -156,7 +260,7 @@ class ApiStruktural extends CI_Controller {
 			$row[] = strtoupper($field->jenisKelamin);
 			$row[] = $field->noHp;
 			$row[] = $field->statusAnggota == '1' ? '<div class="badge badge-info">Aktif</div>': '<div class="badge badge-danger">Non-Aktif</div>';
-			$row[] = '<button class="btn btn-sm btn-info m-1 info" value="'.$field->id.'">Detail</button>'.'<button class="btn btn-sm btn-danger m-1 info" delete="'.$field->id.'">Hapus</button>';
+			$row[] = '<button class="btn btn-sm btn-info m-1 detail" value="'.$field->id.'">Detail</button>'.'<button class="btn btn-sm btn-danger m-1 info" delete="'.$field->id.'">Hapus</button>';
 
 			$data[] = $row;
 		}

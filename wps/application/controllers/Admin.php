@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
 		$this->load->view('iqbal', $data);
 	}
 
-	public function privilage(){
+	public function kategori(){
 		$data['tittle'] = 'E-DESA | ADMIN';
 		$data['view']	= 'admin/privilage.php';
 		$data['script']	= 'javascript/privilage';

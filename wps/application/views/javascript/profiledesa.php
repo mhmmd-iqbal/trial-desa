@@ -1,8 +1,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
-	// $('.tab-pane').hide()
 	default_home()
-
 	$('.tab').on('click', function(event) {
 		event.preventDefault();
 		let tab = $(this).data('value')
@@ -24,13 +22,15 @@ $(document).ready(function() {
 				$(this).attr('disabled', true);
 				$('#sambutan').show()
 				show_sambutan()
-
+				show_gambar_sambutan()
 			break;
 			case 'logo':
 				$('.tab-pane').hide()
 				$('.tab').attr('disabled', false)
 				$(this).attr('disabled', true);
 				$('#logo').show()
+				logo()
+				get_logo()
 			break;
 			case 'alamat':
 				$('.tab-pane').hide()
@@ -40,17 +40,6 @@ $(document).ready(function() {
 			break;
 		}
 	});
-
-	function default_home(){
-		$('#sambutan').hide();
-		$('#logo').hide();
-		$('#alamat').hide();
-		visi()
-		misi()
-		dataVisi()
-		dataMisi()
-	}
-
 	$(function () {
 	    $('.textarea').summernote({
 	    	placeholder: "Input text here...",
@@ -58,42 +47,91 @@ $(document).ready(function() {
 	        height: 300
 	    })
 	})
-
-	$('#btn-sambutan').on('click', function() {
-		$('#modal-sambutan').modal('toggle')
-	});
-
-	$('#simpan-sambutan').on('click', function() {
-		let sambutan = $('#sambutan').val()
-		$.ajax({
-			url: siteurl+'index.php/api/ApiProfileDesa/add_sambutan',
-			type: 'POST',
-			dataType: 'JSON',
-			data: {sambutan: sambutan},
-			success: function(res){
-				$('#modal-sambutan').modal('toggle')
-				$('#sambutan').val('')
-				show_sambutan()
-				toaster(res.header, res.msg, res.icon)
-			},error: function(){
-				toaster('gagal', 'Internal Error Found !', 'error')	
-			}
-		})
-	});
-
-	function show_sambutan(){
-		$.ajax({
-			url: siteurl+'index.php/api/ApiProfileDesa/show_sambutan',
-			type: 'GET',
-			dataType: 'JSON',
-			success: function(res){
-				if(res){
-					$('#show_sambutan').html(res.sambutan)
-				}
-			}
-		})		
-	}
 })
+
+
+
+function default_home(){
+	// $('#visimisi').hide();
+	$('#sambutan').hide();
+	$('#logo').hide();
+	$('#alamat').hide();
+	visi()
+	misi()
+	dataVisi()
+	dataMisi()
+}
+
+$("#inputFile").change(function(event) {  
+    getURL(this);  
+});
+
+function getURL(input) {    
+    if (input.files && input.files[0]) {   
+      var reader = new FileReader();
+      var filename = $("#inputFile").val();
+      filename = filename.substring(filename.lastIndexOf('\\')+1);
+      reader.onload = function(e) {
+        $('#imgView').attr('src', e.target.result);
+        $('#imgView').hide();
+        $('#imgView').fadeIn(500);      
+        $('.custom-file-label').text(filename);             
+      }
+      reader.readAsDataURL(input.files[0]);    
+    }
+}
+
+$('#btn-gambar').on('click', function() {
+	$('#modal-gambar').modal('toggle')
+});
+
+$('#btn-sambutan').on('click', function() {
+	$('#modal-sambutan').modal('toggle')
+});
+
+
+$('#simpan-sambutan').on('click', function() {
+	let sambutan = $('#sambutan').val()
+	$.ajax({
+		url: siteurl+'index.php/api/ApiProfileDesa/add_sambutan',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {sambutan: sambutan},
+		success: function(res){
+			$('#modal-sambutan').modal('toggle')
+			$('#sambutan').val('')
+			show_sambutan()
+			toaster(res.header, res.msg, res.icon)
+		},error: function(){
+			toaster('gagal', 'Internal Error Found !', 'error')	
+		}
+	})
+});
+
+ show_gambar_sambutan = () => {
+	$.ajax({
+		url: siteurl+'index.php/api/ApiProfileDesa/get_gambar_sambutan',
+		type: 'GET',
+		dataType: 'JSON',
+		success : (res) => {
+			$('#gambar').prop('src', baseurl+'assets/upload/gambar/'+res.gambar)
+			$('#imgView').prop('src', baseurl+'assets/upload/gambar/'+res.gambar)
+		}
+	})	
+}
+
+function show_sambutan(){
+	$.ajax({
+		url: siteurl+'index.php/api/ApiProfileDesa/show_sambutan',
+		type: 'GET',
+		dataType: 'JSON',
+		success: function(res){
+			if(res){
+				$('#show_sambutan').html(res.sambutan)
+			}
+		}
+	})		
+}
 
 function visi(){
 	$.ajax({
@@ -148,6 +186,49 @@ $('#simpan-visi').on('click', function(event) {
 			if(res.err === false){
 				window.location.href = siteurl+'VisiMisi'
 			}
+		}
+	})
+});
+
+
+
+$('#simpan-gambar').on('click', function() {
+	$('#upload').trigger('submit')
+});
+
+$('#batal').on('click', function(event) {
+	event.preventDefault();
+	$('#upload').trigger('reset')
+    $('.custom-file-label').text('');             
+});
+
+$('#upload').on('submit', function(event) {
+	event.preventDefault();
+	$.ajax({
+		url         : siteurl+"index.php/api/ApiProfileDesa/gambar_sambutan",
+	    type        : "POST",
+	    data        : new FormData(this),
+	    contentType : false,
+	    cache       : false,
+	    processData : false,
+	    beforeSend  : () => {
+	    	$('#spinner').attr('hidden', false)
+	    	$('#simpan-gambar').attr('disabled', true)
+	    },
+	    success     : (res) => {
+	        let json = JSON.parse(res);
+	    	$('#spinner').attr('hidden', true)
+	    	$('#simpan-gambar').attr('disabled', false)	
+        	toaster(json.header, json.msg, json.icon)    
+	    	if(json.err === false) {
+	    		$('#modal-gambar').modal('toggle') 
+		    	show_gambar_sambutan()
+				$('#upload').trigger('reset')
+	    	}
+	    }, 
+	    error: (xhr, status, error) => {
+			var err = eval("(" + xhr.responseText + ")");
+			console.log(err.Message);
 		}
 	})
 });
@@ -281,4 +362,122 @@ $('#table-misi').on('click', '.check', function(event) {
 		}
 	})
 });
+
+$('#btn-logo').on('click', function() {
+	$('#modal-logo').modal('toggle')
+});
+
+$("#inputFile2").change(function(event) {  
+    getURL2(this);  
+});
+
+function getURL2(input) {    
+    if (input.files && input.files[0]) {   
+      var reader = new FileReader();
+      var filename = $("#inputFile2").val();
+      filename = filename.substring(filename.lastIndexOf('\\')+1);
+      reader.onload = function(e) {
+        $('#imgView2').attr('src', e.target.result);
+        $('#imgView2').hide();
+        $('#imgView2').fadeIn(500);      
+        $('.custom-file-label').text(filename);             
+      }
+      reader.readAsDataURL(input.files[0]);    
+    }
+}
+
+$('#batal2').on('click', function(event) {
+	event.preventDefault();
+	$('#upload_logo').trigger('reset')
+    $('.custom-file-label').text('');             
+});
+
+$('#simpan-logo').on('click', () => {
+	$('#upload-logo').trigger('submit')
+});
+
+$('#upload-logo').on('submit', function(event) {
+	event.preventDefault();
+	$.ajax({
+		url         : siteurl+"index.php/api/ApiProfileDesa/add_logo",
+	    type        : "POST",
+	    data        : new FormData(this),
+	    contentType : false,
+	    cache       : false,
+	    processData : false,
+	    beforeSend  : () => {
+	    	$('#spinner-logo').attr('hidden', false)
+	    	$('#simpan-logo').attr('disabled', true)
+	    },success   : (res) => {
+	    	let json = JSON.parse(res);
+	    	$('#spinner-logo').attr('hidden', true)
+	    	$('#simpan-logo').attr('disabled', false)
+	    	toaster(json.header, json.msg, json.icon)    
+	    	if(json.err === false) {
+	    		$('#modal-logo').modal('toggle') 
+				$('#upload-logo').trigger('reset')
+				logo()
+	    	}
+	    } 
+	})	
+});
+
+logo = () => {
+	var table;
+	table = $('#table-logo').DataTable({
+		"orderable": false, 
+		"destroy": true,
+    	"responsive": false,
+        "processing": true, 
+        "serverSide": true, 
+        "order": [], 
+        
+        "ajax": {
+            "url": siteurl+"index.php/api/ApiProfileDesa/getLogo",
+            "type": "POST"
+        },
+
+        
+        "columnDefs": [
+        { 
+            "targets": [ 0 ], 
+            "orderable": false, 
+        },
+        ],
+
+    });
+}
+
+$('#table-logo').on('click', '.show_logo', function(event) {
+	event.preventDefault();
+	let logo_name = $(this).data('value')
+	$('#modal-show-logo').modal('toggle')
+	$('#modal-detail-show-logo').prop('src', baseurl+'assets/upload/logo/'+logo_name)
+});
+
+$('#table-logo').on('click', '.on', function(event) {
+	event.preventDefault();
+	let id = $(this).attr('value')
+	$.ajax({
+		url: siteurl+'api/ApiProfileDesa/select_logo/'+id,
+		type: 'GET',
+		dataType: 'JSON',
+		success : (res) => {
+			logo()
+			get_logo()
+	    	toaster(res.header, res.msg, res.icon)    
+		}
+	})
+});
+
+get_logo = () => {
+	$.ajax({
+		url: siteurl+'api/ApiProfileDesa/get_active_logo',
+		type: 'GET',
+		dataType: 'JSON',
+		success : (res) => {
+			$('#actived-logo').prop('src', baseurl+'assets/upload/logo/'+res.logo)
+		}
+	})
+}
 </script>

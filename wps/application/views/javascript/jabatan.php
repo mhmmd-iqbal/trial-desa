@@ -68,4 +68,66 @@ function showData(){
     });
 }
 
+
+$('#table').on('click', '.off', function(event) {
+	event.preventDefault();
+	let id =  $(this).attr('value');
+	$.confirm({
+		title: 'Konfirmasi Aktivasi',
+		content: 'Non Aktifkan Kategori Jabatan ?',
+		buttons: {
+		    batal: function () {},
+		    simpan: {
+		        text: 'lanjutkan',
+		        btnClass: 'btn-blue',
+		        keys: ['enter'],
+		        action: function(){
+		        	$.ajax({
+		        		url: siteurl+"index.php/api/ApiStruktural/disable_kategori/"+id,
+		        		dataType: "JSON",
+		        		type: 'GET',
+		        		success: function(res){
+		        			if(res.err === false){
+		        				toaster('BERHASIL', 'Kategori Telah Non Aktif', 'success')	
+		        				showData()
+		        			}
+		        		}
+		        	})
+		        }
+		    }
+		}
+	})
+});
+
+$('#table').on('click', '.on', function(event) {
+	event.preventDefault();
+	let id =  $(this).attr('value');
+	$.confirm({
+		title: 'Konfirmasi Aktivasi',
+		content: 'Aktifkan Kategori Jabatan ?',
+		buttons: {
+		    batal: function () {},
+		    simpan: {
+		        text: 'lanjutkan',
+		        btnClass: 'btn-blue',
+		        keys: ['enter'],
+		        action: function(){
+		        	$.ajax({
+		        		url: siteurl+"index.php/api/ApiStruktural/enable_kategori/"+id,
+		        		dataType: "JSON",
+		        		type: 'GET',
+		        		success: function(res){
+		        			if(res.err === false){
+		        				toaster('BERHASIL', 'Kategori Telah Aktif', 'success')	
+		        				showData()
+		        			}
+		        		}
+		        	})
+		        }
+		    }
+		}
+	})
+});
+
+
 </script>

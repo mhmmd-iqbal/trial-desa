@@ -32,7 +32,7 @@
   <style type="text/css">
     .gambar
     {
-      max-width: 200px;
+      max-width: 400px;
       /*width: 400px;*/
       height: auto;
       float: none;
@@ -262,16 +262,16 @@ to get the desired effect
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item" >
-                <a href="<?=site_url()?>Admin/privilage" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>Kategori Hak Akses</p>
-                </a>
-              </li>
               <li class="nav-item " >
                 <a href="<?=site_url()?>Admin" class="nav-link">
                   <i class="fa fa-circle nav-icon"></i>
                   <p>Data Admin</p>
+                </a>
+              </li>
+              <li class="nav-item" >
+                <a href="<?=site_url()?>Admin/kategori" class="nav-link">
+                  <i class="fa fa-circle nav-icon"></i>
+                  <p>Kategori Hak Akses</p>
                 </a>
               </li>
             </ul>
@@ -288,15 +288,15 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item" >
-                <a href="<?=site_url()?>Struktural/jabatan" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>Kategori Jabatan</p>
-                </a>
-              </li>
-              <li class="nav-item" >
                 <a href="<?=site_url()?>Struktural" class="nav-link">
                   <i class="fa fa-circle nav-icon"></i>
                   <p>Data Penjabat Desa</p>
+                </a>
+              </li>
+              <li class="nav-item" >
+                <a href="<?=site_url()?>Struktural/jabatan" class="nav-link">
+                  <i class="fa fa-circle nav-icon"></i>
+                  <p>Kategori Jabatan</p>
                 </a>
               </li>
             </ul>

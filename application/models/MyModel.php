@@ -16,6 +16,7 @@ class MyModel extends CI_Model{
 			default: break;
 		}
 	}
+
 	public function addData($table, $data){
 		if($this->db->insert($table, $data) === FALSE){
 			$msg = $this->db->error('message');
@@ -28,6 +29,25 @@ class MyModel extends CI_Model{
 		}
 		return array(
 				'msg' 		=> 'Insert Sukses',
+				'header'	=> 'BERHASIL',
+				'icon'		=> 'success',
+				'err'		=> FALSE
+			);
+	}
+
+	public function updateData($table, $data, $where){
+		$this->db->where($where);
+		if($this->db->update($table, $data) === FALSE){
+			$msg = $this->db->error('message');
+			return array(
+				'msg' 		=> $msg['message'],
+				'header'	=> 'GAGAL',
+				'icon'		=> 'error',
+				'err'		=> TRUE
+			);
+		}
+		return array(
+				'msg' 		=> 'Update Sukses',
 				'header'	=> 'BERHASIL',
 				'icon'		=> 'success',
 				'err'		=> FALSE

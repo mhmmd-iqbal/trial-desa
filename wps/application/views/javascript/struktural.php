@@ -45,6 +45,12 @@ $(document).ready(function() {
     theme: "bootstrap",
   });
 
+  $('.select-plugin-anggota').select2({
+    placeholder: 'Status Keaktifan Anggota...',
+    width: '100%',
+    theme: "bootstrap",
+  });
+
 });
 
 $('#simpan').on('click', function(event) {
@@ -57,7 +63,6 @@ $('#submit-form').on('submit', function(event) {
   let jabatan = $('#jabatan').val()
   let nama = $('input[name="nama"]').val()
   let nip = $('input[name="nip"]').val()
-  // let jenisKelamin = $('input[name="jenisKelamin"]:checked').val()
   if((jabatan === null) || (nama === '') || (nip === '')){
     notif("Nama, Jabatan dan NIP tidak boleh kosong!", " ", "warning")
   }else{
@@ -115,5 +120,73 @@ function showData(){
     });
 }
 
+$('#table').on('click', '.detail', function(event) {
+  event.preventDefault();
+  let id = $(this).attr('value')
+  window.location.href = siteurl+'Struktural/detail/'+id
+});
 
+//detail dan update data
+$('#edit').on('click',  function() {
+  $('.update').attr('hidden', false)
+  $('.detail').attr('hidden', true)
+  $('select').attr('disabled', false)
+  $('input[type=radio]').attr('disabled', false)
+  $('input[type=file]').attr('disabled', false)
+  $('.change').attr('readonly', false)
+  $('.select-plugin-id').val($('#id-jabatan').val()).trigger("change");
+  $('.select-plugin-agama').val($('#agama').val()).trigger("change");
+  $('.select-plugin-anggota').val($('#statusAnggota').val()).trigger("change");
+});
+
+$('#reset').on('click',  function() {
+  $('.update').attr('hidden', true)
+  $('.detail').attr('hidden', false);
+  $('select').attr('disabled', true)
+  $('input[type=radio]').attr('disabled', true)
+  $('input[type=file]').attr('disabled', false)
+  $('.change').attr('readonly', true)
+  $('#submit-form').trigger('reset');
+});
+
+
+$('#update').on('click', function(event) {
+  $('#submit-update-form').trigger('submit');
+  return false
+});
+
+$('#submit-update-form').on('submit', function(event) {
+  event.preventDefault();
+  let id = $('#id').val()
+  let jabatan = $('#jabatan').val()
+  let nama = $('input[name="nama"]').val()
+  let nip = $('input[name="nip"]').val()
+  if((jabatan === null) || (nama === '') || (nip === '')){
+    notif("Nama, Jabatan dan NIP tidak boleh kosong!", " ", "warning")
+  }else{
+    $.ajax({
+      url         : siteurl+"index.php/api/ApiStruktural/updateData/"+id,
+      type        : "POST",
+      data        : new FormData(this),
+      contentType : false,
+      cache       : false,
+      processData : false,
+      beforeSend  : function(){
+        loading()
+        $('#simpan').attr('disabled', true);
+      },
+      success     : function(res){
+        var json = JSON.parse(res);
+        if(json.err === true){
+          $('#simpan').attr('disabled', false);
+          return notif(json.header, json.msg, json.icon)
+        }
+        notif(json.header, json.msg, json.icon)
+        setTimeout(function(){
+          window.location.href =siteurl+'Struktural'
+        }, 1000)
+      }
+    })
+  }
+});
 </script>

@@ -32,4 +32,14 @@ class Struktural extends CI_Controller {
 		$data['script']	= 'javascript/jabatan';
 		$this->load->view('iqbal', $data);	
 	}
+
+	function detail($id){
+		$this->db->where('id', $id);
+		$this->db->from('perangkats');
+		$data['data'] 	= (object) $this->db->get()->row_array();
+		$data['tittle'] = 'E-DESA | JABATAN';
+		$data['view']	= 'struktural/detail.php';
+		$data['script']	= 'javascript/struktural';
+		$this->load->view('iqbal', $data);	
+	}
 }

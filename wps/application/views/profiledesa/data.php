@@ -32,7 +32,7 @@
               	data-value="sambutan" 
               	class="tab btn btn-default mr-1" 
               	aria-controls="sambutan" 
-              	role="tab" data-toggle="tab">Sambutan Kepala Desa</button>
+              	role="tab" data-toggle="tab">Kata Sambutan Web Desa</button>
               <button 
               	data-value="logo" 
               	class="tab btn btn-default mr-1" 
@@ -48,7 +48,7 @@
           <div class="mt-2">
             <div class="tab-pane active" id="visimisi">
             	<div class="row">
-            		<div class="col-lg-7">
+            		<div class="col-lg-12">
 			            <div class="card">
 			              <div class="card-body">
 			                <div class="row">
@@ -60,7 +60,7 @@
 			              </div>
 			            </div>
 			          </div>
-			          <div class="col-lg-5">
+			          <div class="col-lg-12">
 			          	<div class="card">
 			          		<div class="card-body">
 			                <div class="row">
@@ -118,10 +118,10 @@
             <div class="tab-pane" id="sambutan">
             	
             	<div class="row">
-			          <div class="col-lg-5">
+			          <div class="col-lg-7">
 				          <div class="card card-primary">
 				            <div class="card-header">
-				              <h5 class="text-center">Kata Sambutan Kepala Desa</h5>
+				              <h5 class="text-center">Kata-Kata Sambutan</h5>
 				            </div>
 				            <div class="card-body" style="text-align: justify;" id="show_sambutan"></div>
 				            <div class="card-footer text-right">
@@ -129,11 +129,66 @@
 				            </div>
 				          </div>
 				        </div>
+                <div class="col-md-5">
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h5 class="text-center">Gambar Untuk Kata-Kata Sambutan</h5>
+                    </div>
+                    <div class="card-body text-center" style="text-align: justify;">
+                      <img 
+                        id="gambar" 
+                        style="max-width: 70%;" 
+                        src="<?=base_url()?>assets/logo/no_image.png" 
+                        alt="">
+                    </div>
+                    <div class="card-footer text-right">
+                      <button class="btn btn-info" id="btn-gambar"><i class="fa fa-gear"></i> Perbarui gambar</button>
+                    </div>
+                  </div>
+                </div>
 	            </div>
 	          </div>
             
-            <div class="tab-pane" id="logo">..2.</div>
-            
+            <div class="tab-pane" id="logo">
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h5 class="text-center">Actived Logo</h5>
+                    </div>
+                    <div class="card-body text-center" style="text-align: justify;">
+                      <img 
+                        id="actived-logo" 
+                        style="max-width: 70%;" 
+                        src="<?=base_url()?>assets/logo/no_image.png" 
+                        alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h5 class="text-center">Daftar Logo Desa</h5>
+                    </div>
+                    <div class="card-body">
+                      <button class="btn btn-primary mb-2" id="btn-logo"><i class="fa fa-gear"></i> Perbarui Logo</button>
+                      <table class="table table-bordered" id="table-logo">
+                        <thead class="">
+                          <tr>
+                            <th>No</th>
+                            <th>Gambar</th>
+                            <th>Status</th>
+                            <th>Dibuat Pada</th>
+                            <th>Aksi</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+            </div>
             <div class="tab-pane" id="alamat">..3.</div>
           </div>
         </div>
@@ -159,6 +214,100 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button type="button" class="btn btn-primary" id="simpan-sambutan">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-gambar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Perbarui Gambar Pada Kata Sambutan</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <form action="#" method="POST" enctype="multipart/form-data" id="upload">
+              <div class="custom-file">
+                  <input 
+                    type="file" 
+                    id="inputFile" 
+                    class="imgFile custom-file-input" 
+                    aria-describedby="inputGroupFileAddon01"
+                    accept="image/*"
+                    name="gambar" >
+                  <label class="custom-file-label" for="inputFile">Choose file</label>
+              </div>
+              <div class="imgWrap mb-1 text-center">
+                  <img 
+                    src="<?=base_url()?>assets/logo/no_image.png" 
+                    id="imgView" 
+                    style="max-height: 300px; width: auto;"
+                    class="card-img-top img-fluid" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="batal" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="simpan-gambar"><i id="spinner" hidden class="fa fa-spinner fa-spin fa-fw"></i> Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal-logo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tambah Logo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <form action="#" method="POST" enctype="multipart/form-data" id="upload-logo">
+              <div class="custom-file">
+                  <input 
+                    type="file" 
+                    id="inputFile2" 
+                    class="imgFile custom-file-input" 
+                    aria-describedby="inputGroupFileAddon01"
+                    accept="image/*"
+                    name="logo" >
+                  <label class="custom-file-label" for="inputFile">Choose file</label>
+              </div>
+              <div class="imgWrap mt-1 text-center">
+                  <img 
+                    src="<?=base_url()?>assets/logo/no_image.png" 
+                    id="imgView2" 
+                    style="max-height: 300px; width: auto;"
+                    class="card-img-top img-fluid" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="batal2" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="simpan-logo"><i id="spinner-logo" hidden class="fa fa-spinner fa-spin fa-fw"></i> Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-show-logo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="gambar">
+          <img src="" alt="logo" id="modal-detail-show-logo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
