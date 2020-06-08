@@ -13,7 +13,6 @@ class LayananSurat extends CI_Controller {
 	}
 
 	function index(){
-		// print_r($this->session->userdata());
 		$data['tittle'] = 'E-DESA | LAYANAN';
 		$data['view']	= 'layanan/data.php';
 		$data['script']	= 'javascript/administrasisurat';
@@ -28,6 +27,9 @@ class LayananSurat extends CI_Controller {
 	}
 
 	function kop_surat(){
-		echo "string";
+		$data['tittle'] = 'E-DESA | LAYANAN';
+		$data['view']	= 'layanan/kop_surat.php';
+		$data['script']	= 'javascript/layanansurat';
+		$this->load->view('iqbal', $data);
 	}
 }

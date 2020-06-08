@@ -20,6 +20,7 @@ class surat extends CI_Controller {
 		$data['view'] 	= 'permohonan';
 		$data['active']	= 'surat';
 		$data['aksi']	= 'aksi/permohonan';
+		$data['back_url'] = $this->url();
 		$this->load->view('template', $data);
 	}
 
@@ -27,5 +28,15 @@ class surat extends CI_Controller {
 		$halaman = $this->input->post('halaman');
 		$this->session->set_userdata('halaman', $halaman);
 		echo json_encode(null);
+	}
+	
+	function url(){
+		$http_req   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) === 'on' ? "https://" : "http://";
+		$server_url = $_SERVER['HTTP_HOST'];
+		$back_url   = $http_req.$server_url."/wps/";
+		if(( $server_url == 'localhost')||($server_url == '192.168.0.0')){
+		    $back_url = $http_req.$server_url."/edesa/wps/";
+		}
+		return $back_url;
 	}
 }

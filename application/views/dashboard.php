@@ -31,9 +31,9 @@
         <div class="row d-flex">
           <div class="col-md-5 order-md-last wrap-about align-items-stretch">
             <div class="wrap-about-border ftco-animate">
-              <div class="img" style="background-image: url(<?=base_url('assets/template/')?>images/about.jpg); border"></div>
+              <div class="img" style="background-image: url(<?=$back_url."/assets/upload/gambar/".$gambar['gambar']?>); border"></div>
               <div class="text">
-                <h3>Kata Sambutan Kepala Desa</h3>
+                <h3>Kata-Kata Sambutan</h3>
                 <p id="show_sambutan">
                   <?=$sambutan['sambutan']?>
                 </p>
@@ -42,6 +42,11 @@
             </div>
           </div>
           <div class="col-md-7 wrap-about pr-md-4 ftco-animate">
+            <?php if(isset($logo['logo'])) :?>
+              <div class="text-center p-1">
+                <img src="<?=$back_url ?>assets/upload/logo/<?=$logo['logo']?>" alt="" style = "max-width: 300px; "> 
+              </div>
+            <?php endif; ?>
             <h2 class="mb-4">Visi Desa</h2>
             <p id="show_visi">
               <?=$visi['visi']?>

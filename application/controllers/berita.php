@@ -26,6 +26,8 @@ class berita extends CI_Controller {
 		$data['view'] 	= 'konten';
 		$data['active']	= 'berita';
 		$data['aksi']	= 'aksi/dashboard';
+		$data['back_url'] = $this->url();
+
 		$this->load->view('template', $data);
 	}
 
@@ -42,5 +44,15 @@ class berita extends CI_Controller {
 		}
 		return $res;
 		// echo json_encode($res);
+	}
+
+	function url(){
+		$http_req   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) === 'on' ? "https://" : "http://";
+		$server_url = $_SERVER['HTTP_HOST'];
+		$back_url   = $http_req.$server_url."/wps/";
+		if(( $server_url == 'localhost')||($server_url == '192.168.0.0')){
+		    $back_url = $http_req.$server_url."/edesa/wps/";
+		}
+		return $back_url;
 	}
 }

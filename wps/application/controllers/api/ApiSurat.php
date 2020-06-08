@@ -66,7 +66,7 @@ class ApiSurat extends CI_Controller {
 			$row = array();
 			$row[] = $no;
 			$row[] = $field->nmSurat;
-			$row[] = $field->username;
+			// $row[] = $field->username;
 			$row[] = $field->createdAt;
 			$row[] = '<button class="btn btn-sm btn-info m-1 info" value="'.$field->id.'"><i class="fa fa-exclamation-triangle"></i></button>'.'<button class="btn btn-sm btn-success m-1 update" value="'.$field->id.'"><i class="fa fa-pencil-square-o"></i></button>'.'<button class="btn btn-sm btn-danger m-1 delete" value="'.$field->id.'"><i class="fa fa-trash-o"></i></button>';
 			$data[] = $row;

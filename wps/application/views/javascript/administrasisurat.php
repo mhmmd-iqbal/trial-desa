@@ -307,6 +307,4 @@ $('#table').on('click', '.info', function(event) {
 		}		
 	})
 });
-
-
 </script>

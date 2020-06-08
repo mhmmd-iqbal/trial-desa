@@ -354,7 +354,7 @@ to get the desired effect
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-folder-open-o"></i>
               <p>
-                Administrasi Surat
+                Layanan Surat
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
@@ -412,7 +412,7 @@ to get the desired effect
           <?php endif; ?>
           <?php if($akses['opendata'] != '1') : ?>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="<?=base_url()?>OpenData" class="nav-link">
               <i class="nav-icon fa fa-file-pdf-o"></i>
               <p>
                 Open Data
