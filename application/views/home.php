@@ -23,27 +23,27 @@
 	
 	<div class="">
 		<div class="row m-2">
-			<div class="col-md-4">
-				<div class="jumbotron" style="background-image: url('<?=base_url() ?>assets/upload/no_image.png'); ">
-				  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-				  <hr class="my-4">
-				  <div class="small">Judul</div>
+			<div class="col-md-12 pb-2">
+				<div class="text-center">	
+					<h5>Pengumuman Penting</h5>
 				</div>
 			</div>
+			<?php for($i=0; $i < 3; $i++) : ?>
 			<div class="col-md-4">
-				<div class="jumbotron" style="background-image: url('<?=base_url() ?>assets/upload/no_image.png'); ">
-				  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-				  <hr class="my-4">
-				  <div class="small">Judul</div>
+				<div 
+						class="jumbotron" 
+						style="background-image: url('<?=base_url() ?>assets/upload/project-1.jpg'); 
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: cover;
+						height: 300px
+						">
+				  <!-- <p class="lead text-white">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> -->
+				  <!-- <hr class="my-4"> -->
+				  <!-- <div class="text-white">Judul</div> -->
 				</div>
 			</div>
-			<div class="col-md-4">
-				<div class="jumbotron" style="background-image: url('<?=base_url() ?>assets/upload/no_image.png'); ">
-				  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-				  <hr class="my-4">
-				  <div class="small">Judul</div>
-				</div>
-			</div>
+			<?php endfor; ?>
 		</div>		
 	</div>
 
