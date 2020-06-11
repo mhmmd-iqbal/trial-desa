@@ -21,6 +21,44 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/flaticon.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/icomoon.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+      
+      hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .gambar
+      {
+        /*max-width: 400px;*/
+        /*width: 400px;*/
+        height: auto;
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: none;
+      }
+      .gambar img
+      {
+        object-fit: cover;
+        width: 100%;
+      }
+      .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
     <div class="bg-top navbar-light">
@@ -39,12 +77,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
-        <form action="#" class="searchform order-lg-last">
-          <div class="form-group d-flex">
-            <input type="text" class="form-control pl-3" placeholder="Search">
-            <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-          </div>
-        </form>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto">
             <li 
@@ -53,8 +85,9 @@
             <li class="nav-item" id="about"><a href="about.html" class="nav-link">Tentang Desa</a></li>
             <li class="nav-item <?=$active == 'berita' ? 'active': ''?>" id="berita"><a href="services.html" class="nav-link">Berita</a></li>
             <li class="nav-item" id="dokumentasi"><a href="project.html" class="nav-link">Dokumentasi</a></li>
+            <li class="nav-item" id="dokumentasi"><a href="project.html" class="nav-link">Inventaris</a></li>
             <li class="nav-item <?=$active == 'surat' ? 'active': ''?>" id="surat"><a href="<?=base_url('surat')?>" class="nav-link">Permohonan Surat</a></li>
-            <li class="nav-item" id="contact"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item" id="contact"><a href="contact.html" class="nav-link">Regulasi & Informasi</a></li>
           </ul>
         </div>
       </div>

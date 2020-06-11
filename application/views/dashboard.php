@@ -1,4 +1,4 @@
-<section class="home-slider owl-carousel">
+<!-- <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image:url(<?=base_url('assets/template/')?>images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container">
@@ -24,7 +24,7 @@
         </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="ftco-section">
       <div class="container">
@@ -60,7 +60,7 @@
       </div>
     </section>
     
-    <section class="ftco-section bg-light">
+  <!--   <section class="ftco-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
@@ -126,7 +126,7 @@
         </div>
       </div>
     </section>
-  
+   -->
     <section class="ftco-intro ftco-no-pb img" style="background-image: url(<?=base_url('assets/template/')?>images/bg_3.jpg);">
       <div class="container">
         <div class="row justify-content-center mb-5">
@@ -209,7 +209,7 @@
         </div>
         <div class="row">
         <?php foreach ($konten as $i => $d) { ?>
-          <div class="col-md-6 col-lg-4 ftco-animate">
+          <div class="col-md-4 col-lg-4 ftco-animate">
             <div class="blog-entry">
               <?php $url = $d->gambar != null ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."wps/assets/upload/post/".$d->gambar : base_url('assets/upload/no_image.png') ; ?>
               <a href="<?=site_url('berita/').$d->url?>" class="block-20 d-flex align-items-end" style="background-image: url('<?=$url?>');">
@@ -306,12 +306,12 @@
 
     <section class="ftco-section testimony-section bg-light">
       <div class="container">
-        <div class="row justify-content-center mb-5">
+        <!-- <div class="row justify-content-center mb-5">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Aparatur Desa</h2>
-            <!-- <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p> -->
+            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
           </div>
-        </div>
+        </div> -->
         <div class="row ftco-animate justify-content-center">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel">

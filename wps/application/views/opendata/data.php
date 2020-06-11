@@ -65,14 +65,14 @@
         <h4 class="modal-title">Upload Data</h4>
       </div>
       <div class="modal-body">
-        <div class="form" enctype="multipart/form-data">
+        <form class="form" enctype="multipart/form-data" >
           <input 
             type  = "file"
             id    = "file" 
             name  = "file"
             accept= "application/msword, text/plain, application/pdf" 
           />
-        </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
