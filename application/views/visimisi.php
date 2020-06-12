@@ -1,75 +1,44 @@
 <div class="pt-4 bg-light">
-	<div class="col-md-12 bg-white">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5 gambar" >
-	        		<img src="<?=$back_url."/assets/upload/gambar/".$gambar['gambar']?>" style=""  alt="">
-	        	</div>
-				<div class="col-md-7">
-					<b>Kata-Kata Sambutan</b>
-	                <p class="center" style="text-align: justify;"><?=$sambutan['sambutan']?></p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row mt-2">
-		<div class="col-md-12 pb-2">
-			<div class="text-center">	
-				<h5>PENGUMUMAN PENTING</h5>
-			</div>
-		</div>
-		<?php for($i=0; $i < 3; $i++) : ?>
-		<div class="col-md-4">
-			<div 
-					class="jumbotron" 
-					style="background-image: url('<?=base_url() ?>assets/upload/project-1.jpg'); 
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: cover;
-					height: 300px
-					">
-			  <!-- <p class="lead text-white">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> -->
-			  <!-- <hr class="my-4"> -->
-			  <!-- <div class="text-white">Judul</div> -->
-			</div>
-		</div>
-		<?php endfor; ?>
-	</div>		
 
 	<div class="container pb-2">
 		<div class="row">
 			<div class="col-md-8">
-				<?php foreach ($konten as $i => $d) { ?>
-		        	<?php $url = $d->gambar != null ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."wps/assets/upload/post/".$d->gambar : ''; ?>
-
-		          	<div class="row pb-2">
-			           <div class="col-lg-12">
-			          		<div class="card">
-			          			<div class="card-body">
-			          				<div class="row">
-			          					<div class="col-lg-4 gambar">
-			          						<img src="<?=$url?>" >
-			          					</div>
-			          					<div class="col-lg-8">
-			          						<div class="small clearfix">
-			          							<div class="float-left">
-			          							<?=date('d-m-Y h:i:s', strtotime($d->created_at))?> 
-			          							</div>
-			          							<div class="float-right">
-			          							<?=$d->user?> 
-				          						</div>
-		          							</div>	
-			          						<div class="small"><?=$d->kategori ?> </div>
-							                <h5 class="heading"><a href="<?=site_url('berita/').$d->url?>"><?=$d->judul?></a></h5>
-			          					</div>
-			          				</div>
-			          			</div>
-			          		</div>
-			          	</div>
-			        </div>
-		        <?php } ?>
-
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+			              <ol class="breadcrumb">
+			                <li class="breadcrumb-item"><a href="#">Home</a></li>
+			                <li class="breadcrumb-item"><a href="#">Tentang Desa</a></li>
+			                <li class="breadcrumb-item active" aria-current="page">Visi dan Misi</li>
+			              </ol>
+			            </nav>
+					</div>
+					<div class="col-md-12 pb-2">
+						<div class="card">
+							<div class="card-header bg-light">
+								<h5>VISI DESA</h5>
+							</div>	
+							<div class="card-body">
+								<div><?=$visi['visi'] ?></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 pb-2">
+						<div class="card">
+							<div class="card-header bg-light">
+								<h5>MISI DESA</h5>
+							</div>	
+							<div class="card-body">
+								<div><?=$misi['misi'] ?></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 text-right">
+						<a href="#" class="fa fa-facebook icon"></a>
+						<a href="#" class="fa fa-whatsapp icon"></a>
+						<a href="#" class="fa fa-telegram icon"></a>
+					</div>
+				</div>
 			</div>
 
 			<div class="col-md-4">
@@ -282,61 +251,4 @@
 		</div>
 	</div>
 
-	
-	<div class="row ">
-		<div class="col-md-12 pb-2">
-			<div class="card">
-				<div class="card-header text-center">	
-					<h5>PENJABAT DESA</h5>
-				</div>
-				<div class="card-body">
-					<div class="container">
-						<div class="carousel-testimony owl-carousel">
-			              <?php foreach ($perangkat as $d ): ?>
-			              	<?php $url = $d->photo != null ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."wps/assets/upload/".$d->photo : base_url('assets/upload/no_image.png') ; ?>
-				              <div class="">
-				              	<div class="card bg-light ">
-						          <div class="penjabat-img">
-							          <img 	class="" src="<?=$url?>" >
-						          </div>
-					
-						          <div class="card-body text-center">
-						            <h5 class="card-title"><?=$d->jabatan?></h5>
-						            <div class="name"><?=$d->nama?></div>
-				                    <div class="small">NIP. <?=$d->nip?></div>
-						          </div>
-						        </div>
-			              </div>
-			              <?php endforeach ?>
-			            </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row mb-2">
-		<div class="col-md-12">
-			<div class="card bg-dark">
-				<div class="card-header text-center">
-					<h5 class="text-white">LAPORAN MASYARAKAT</h5>
-				</div>
-				<div class="card-body">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="card bg-white">
-									<div class="card-body" style="height: 300px">
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 mt-2 text-center">
-								<button class="btn btn-primary "> Lihat Selengkapnya</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>

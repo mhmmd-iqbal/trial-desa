@@ -53,11 +53,12 @@ class Welcome extends CI_Controller {
 			echo $msg_resp;
 		}
 	}
+	
 	function url(){
 		$http_req   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) === 'on' ? "https://" : "http://";
 		$server_url = $_SERVER['HTTP_HOST'];
 		$back_url   = $http_req.$server_url."/wps/";
-		if(( $server_url == 'localhost')||($server_url == '192.168.0.0')){
+		if(( $server_url == 'localhost')||($server_url == '192.168.0.0')||($server_url == '192.168.1.3')){
 		    $back_url = $http_req.$server_url."/edesa/wps/";
 		}
 		return $back_url;
@@ -70,8 +71,6 @@ class Welcome extends CI_Controller {
 		$data['aksi']	  = 'aksi/dashboard';
 
 		$data['konten']   = $this->get_konten();
-		$data['visi']     = $this->get_visi();
-		$data['misi']     = $this->get_misi();
 		$data['sambutan'] = $this->get_sambutan();
 		$data['gambar']   = $this->get_gambar_kata_sambutan();
 		$data['perangkat']= $this->get_perangkat();
@@ -91,32 +90,6 @@ class Welcome extends CI_Controller {
 			];
 		}
 		return $res; 
-	}
-	function get_visi(){
-		$this->db->select('visi');
-		$this->db->where('status', '1');
-		$this->db->from('visis');
-		$res = $this->db->get()->row_array();
-		if($res == null){
-			$res = [
-				'result' => null
-			];
-		}
-		return $res;
-	}
-
-	function get_misi(){
-		$this->db->select('misi');
-		$this->db->where('status', '1');
-		$this->db->from('misis');
-		$res = $this->db->get()->row_array();
-		if($res == null){
-			$res = [
-				'result' => null
-			];
-		}
-		return $res;
-		// echo json_encode($res);
 	}
 
 	function get_gambar_kata_sambutan(){

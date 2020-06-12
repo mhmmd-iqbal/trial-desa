@@ -22,14 +22,20 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/icomoon.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <style type="text/css">
-      
+
+      #dropdownitem:hover{
+        color: orange;
+        transition: 0.3s;
+      }
       hr {
         margin-top: 1rem;
         margin-bottom: 1rem;
         border: 0;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
       }
+
       .gambar
       {
         /*max-width: 400px;*/
@@ -38,13 +44,30 @@
         float: none;
         margin-right: auto;
         margin-left: auto;
-        margin-bottom: none;
+        /*margin-bottom: none;*/
       }
       .gambar img
       {
         object-fit: cover;
         width: 100%;
       }
+      .penjabat-img{
+        width: auto;
+        height: 350px;
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .penjabat-img img{
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
       .loader {
         border: 10px solid #f3f3f3; /* Light grey */
         border-top: 10px solid #3498db; /* Blue */
@@ -58,9 +81,43 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+      .icon {
+        padding: 10px;
+        /*font-size: 20px;*/
+        text-align: center;
+        text-decoration: none;
+        /*border-radius: 10px;*/
+        margin: 5px 2px;
+      }
+
+      .icon:hover {
+          color: white;
+          opacity: 0.7;
+      }
+      
+      .fa-whatsapp {
+        background: #00b489;
+        color: white;
+      }
+      .fa-telegram {
+        background: #55ACEE;
+        color: white;
+      }
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      .judul-konten {
+        color: #212529;
+      }
+      .judul-konten:hover{
+        color: orange;
+        transition: 0.3s;
+      }
     </style>
   </head>
   <body>
+    
     <div class="bg-top navbar-light">
       <div class="container">
         <div class="row no-gutters d-flex align-items-center align-items-stretch">
@@ -82,7 +139,26 @@
             <li 
               class="nav-item <?=$active == 'dashboard' ? 'active': ''?>" 
               id="dashboard"><a href="<?=base_url()?>" class="nav-link pl-0">Beranda</a></li>
-            <li class="nav-item" id="about"><a href="about.html" class="nav-link">Tentang Desa</a></li>
+            
+            <li class="nav-item dropdown <?=$active == 'tentang' ? 'active': ''?>" id="about">
+              <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Tentang Desa</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>VisiMisi">Visi dan Misi</a>
+                <a class="dropdown-item" id="dropdownitem" href="#">Wilayah</a>
+                <a class="dropdown-item" id="dropdownitem" href="#">Pemerintahan</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown" id="about">
+              <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Desa</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" id="dropdownitem" href="#">Data Pekerjaan</a>
+                <a class="dropdown-item" id="dropdownitem" href="#">Data Jenis Kelamin</a>
+                <a class="dropdown-item" id="dropdownitem" href="#">Data Usia</a>
+                <a class="dropdown-item" id="dropdownitem" href="#">Data Pendidikan</a>
+              </div>
+            </li>
+            
             <li class="nav-item <?=$active == 'berita' ? 'active': ''?>" id="berita"><a href="services.html" class="nav-link">Berita</a></li>
             <li class="nav-item" id="dokumentasi"><a href="project.html" class="nav-link">Dokumentasi</a></li>
             <li class="nav-item" id="dokumentasi"><a href="project.html" class="nav-link">Inventaris</a></li>

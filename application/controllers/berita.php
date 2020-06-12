@@ -22,6 +22,7 @@ class Berita extends CI_Controller {
 		$this->db->from('kontens');
 		$data['konten'] = (object) $this->db->get()->row_array();
 		$data['recent'] = $this->get_konten();
+		$data['kategori'] = $this->get_kategori();
 		$data['tittle'] = 'E-DESA | '.$data['konten']->judul;
 		$data['view'] 	= 'konten';
 		$data['active']	= 'berita';
@@ -32,10 +33,12 @@ class Berita extends CI_Controller {
 	}
 
 	function get_konten(){
-		$this->db->select(['judul', 'konten', 'user', 'gambar', 'created_at', 'url']);
+		$this->db->select('kategoris.kategori');
+		$this->db->select(['kontens.judul', 'kontens.konten', 'kontens.user', 'kontens.gambar', 'kontens.created_at', 'kontens.url']);
 		$this->db->from('kontens');
+		$this->db->join('kategoris', 'kontens.idKategori = kategoris.id');
 		$this->db->order_by('created_at', 'desc');
-		$this->db->limit(3);
+		$this->db->limit(5);
 		$res =  $this->db->get()->result();	
 		if($res == null){
 			$res = [
@@ -45,7 +48,17 @@ class Berita extends CI_Controller {
 		return $res;
 		// echo json_encode($res);
 	}
-
+	function get_kategori(){
+		$this->db->select('kategori');
+		$this->db->from('kategoris');
+		$res =  $this->db->get()->result();	
+		if($res == null){
+			$res = [
+				'result' => null
+			];
+		}
+		return $res;
+	}
 	function url(){
 		$http_req   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) === 'on' ? "https://" : "http://";
 		$server_url = $_SERVER['HTTP_HOST'];
