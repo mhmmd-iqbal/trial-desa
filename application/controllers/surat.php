@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Surat extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('MyModel');		 
+		$this->load->model('MyModel');
+		$this->load->library('backurl');		 
 	}
 
 	function index(){
@@ -20,7 +21,6 @@ class Surat extends CI_Controller {
 		$data['view'] 	= 'permohonan';
 		$data['active']	= 'surat';
 		$data['aksi']	= 'aksi/permohonan';
-		$data['back_url'] = $this->url();
 		$this->load->view('template', $data);
 	}
 
@@ -29,14 +29,36 @@ class Surat extends CI_Controller {
 		$this->session->set_userdata('halaman', $halaman);
 		echo json_encode(null);
 	}
-	
-	function url(){
-		$http_req   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) === 'on' ? "https://" : "http://";
-		$server_url = $_SERVER['HTTP_HOST'];
-		$back_url   = $http_req.$server_url."/wps/";
-		if(( $server_url == 'localhost')||($server_url == '192.168.0.0')){
-		    $back_url = $http_req.$server_url."/edesa/wps/";
-		}
-		return $back_url;
+
+	function create($id){
+		$this->db->select([
+			'surats.*',
+			'perangkats.jabatan',
+			'perangkats.nip',
+			'perangkats.nama',
+		]);
+		$this->db->where('surats.id', $id);
+		$this->db->from('surats');
+		$this->db->join('perangkats', 'perangkats.id = surats.idPerangkat');
+		$data['surat'] =  $this->db->get()->row_array();
+		
+		$this->db->select('keterangan');
+		$this->db->where('idSurat', $data['surat']['id']);
+		$this->db->from('list1');
+		$data['surat']['list1'] = $this->db->get()->result_array();
+
+		$this->db->select('keterangan');
+		$this->db->where('idSurat', $data['surat']['id']);
+		$this->db->from('list2');
+		$data['surat']['list2'] = $this->db->get()->result_array();
+
+		$data['url'] 	= $this->backurl->main_url();
+
+		$data['tittle'] = 'E-DESA | PERMOHONAN SURAT';
+		$data['view'] 	= 'create_permohonan';
+		$data['active']	= 'surat';
+		$data['aksi']	= 'aksi/permohonan';
+		$this->load->view('template', $data);
 	}
+	
 }

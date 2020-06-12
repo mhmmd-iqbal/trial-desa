@@ -144,8 +144,8 @@
               <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Tentang Desa</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>VisiMisi">Visi dan Misi</a>
-                <a class="dropdown-item" id="dropdownitem" href="#">Wilayah</a>
-                <a class="dropdown-item" id="dropdownitem" href="#">Pemerintahan</a>
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>wilayah">Wilayah</a>
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>pemerintahan">Pemerintahan</a>
               </div>
             </li>
 
@@ -275,12 +275,22 @@
   <script src="<?=base_url()?>assets/template/js/aos.js"></script>
   <script src="<?=base_url()?>assets/template/js/jquery.animateNumber.min.js"></script>
   <script src="<?=base_url()?>assets/template/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="<?=base_url()?>assets/template/js/google-map.js"></script>
+  <script src="<?=base_url()?>assets/sweetalert/sweetalert.min.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+  <!-- <script src="<?=base_url()?>assets/template/js/google-map.js"></script> -->
   <script src="<?=base_url()?>assets/template/js/main.js"></script>
   <script>
       const baseurl = "<?php print base_url(); ?>";
       const siteurl = "<?php print site_url(); ?>";
+      function notif(title, text, icon) {
+        swal({ 
+          title: title,
+          text: text,
+          icon: icon,
+          buttons: false,
+          timer: 1500,
+        });
+      }
   </script>
   <?php $this->load->view($aksi) ?>
   <script>

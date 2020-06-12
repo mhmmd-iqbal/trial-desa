@@ -1,10 +1,4 @@
-<?php
-  if(($_SERVER['HTTP_HOST'] == 'localhost')||($_SERVER['HTTP_HOST'] == '192.168.0.0')){
-    $url_akses = "/edesa/wps/assets/upload/post/";
-  }else{
-    $url_akses = "/wps/assets/upload/post/";
-  }
-?>
+
 <div class="pt-4 bg-light">
   <div class="container pb-2">
     <div class="row">
@@ -32,13 +26,13 @@
             </div>
           </div>
           <div class="col-md-12 pb-2">
-            <?php $url = $konten->gambar != null ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$url_akses.$konten->gambar : base_url('assets/upload/no_image.png') ; ?>
+            <?php $url = $konten->gambar != null ? $url.'assets/upload/post/'.$konten->gambar : base_url('assets/upload/no_image.png') ; ?>
             <img src="<?=$url?>" alt="" style="width: 100%;">
           </div>
           <div class="col-md-12 pb-2">
             <div class="card">
               <div class="card-body">
-                <?=$konten->konten ?>
+                <?=$konten->konten?>
               </div>
             </div>
           </div>

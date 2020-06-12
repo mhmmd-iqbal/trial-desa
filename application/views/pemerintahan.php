@@ -12,29 +12,62 @@
 			              </ol>
 			            </nav>
 					</div>
+					<?php foreach ($jabatan as $d): ?>
 					<div class="col-md-12 pb-2">
 						<div class="card">
 							<div class="card-header bg-light">
-								<h5>Wilayah Desa</h5>
+								<h5><?=$d->jabatan ?></h5>
 							</div>	
 							<div class="card-body">
-							</div>
+								<div class="row">
+									<div class="col-md-3 text-center pb-2">
+										<div class="gambar" style="">
+											<img src="<?=$url.'/assets/upload/'.$d->photo ?>" alt="">
+										</div>
+									</div>
+									<div class="col-md-9">
+										<div class="table-responsive">
+											<table class="table table-bordered table-hover" style="font-size: 13px">
+												<tbody>
+													<tr>
+														<td width="30%">Nama</td>
+														<td><?=$d->nama ?></td>
+													</tr>
+													<tr>
+														<td>NIP</td>
+														<td><?=$d->nip?></td>
+													</tr>
+													<tr>
+														<td>Jenis Kelamin</td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Tempat Tanggal Lahir</td>
+														<td><?=$d->tmpLahir.','.date('d-m-Y', strtotime($d->tglLahir)) ?></td>
+													</tr>
+													<tr>
+														<td>Agama</td>
+														<td><?=$d->agama ?></td>
+													</tr>
+													<tr>
+														<td>No HP</td>
+														<td><?=$d->noHp ?></td>
+													</tr>
+													<tr>
+														<td>Alamat</td>
+														<td><?=$d->alamat ?></td>
+													</tr>
+												</tbody>
+											</table>	
+										</div>
+									</div>
+										
+									</div>
+								</div>
 						</div>
 					</div>
-					<div class="col-md-12 pb-2">
-						<div class="card">
-							<div class="card-header bg-light">
-								<h5>Peta Desa</h5>
-							</div>	
-							<div class="card-body">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 text-right">
-						<a href="#" class="fa fa-facebook icon"></a>
-						<a href="#" class="fa fa-whatsapp icon"></a>
-						<a href="#" class="fa fa-telegram icon"></a>
-					</div>
+					<?php endforeach ?>
+
 				</div>
 			</div>
 
