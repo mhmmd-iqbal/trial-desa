@@ -4,7 +4,7 @@
       <div class="card ">
         <div class="card-header">
           <div class="text-center">
-            <h5>Layanan Mandiri</h5>
+            <h5>Layanan Mandiri <?=$this->session->userdata('halaman')?></h5>
           </div>
         </div>
         <div class="card-body">
@@ -22,8 +22,8 @@
               <div class="col-md-5 p-2">
                 <input  type="text" class="form-control" placeholder="Input PIN...">
               </div>
-              <div class="col-md-2 ">
-                <button class="btn btn-primary">
+              <div class="col-md-2 p-2">
+                <button class="btn btn-primary btn-lg" style="border-radius: 0px">
                   Masukkan Data
                 </button>
               </div>

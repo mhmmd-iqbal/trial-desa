@@ -4,7 +4,7 @@
     <title><?=$tittle ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">    
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="<?=base_url()?>assets/template/css/open-iconic-bootstrap.min.css">
@@ -149,12 +149,12 @@
               </div>
             </li>
 
-            <li class="nav-item dropdown" id="about">
+            <li class="nav-item dropdown <?=$active == 'data' ? 'active': ''?>">
               <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Desa</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" id="dropdownitem" href="#">Data Pekerjaan</a>
-                <a class="dropdown-item" id="dropdownitem" href="#">Data Jenis Kelamin</a>
-                <a class="dropdown-item" id="dropdownitem" href="#">Data Usia</a>
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>Data/Pekerjaan">Data Pekerjaan</a>
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>data/gender">Data Jenis Kelamin</a>
+                <a class="dropdown-item" id="dropdownitem" href="<?=base_url()?>data/age">Data Usia</a>
                 <a class="dropdown-item" id="dropdownitem" href="#">Data Pendidikan</a>
               </div>
             </li>
@@ -276,6 +276,7 @@
   <script src="<?=base_url()?>assets/template/js/jquery.animateNumber.min.js"></script>
   <script src="<?=base_url()?>assets/template/js/scrollax.min.js"></script>
   <script src="<?=base_url()?>assets/sweetalert/sweetalert.min.js"></script>
+  <script src="<?=base_url()?>assets/canvasjs/canvasjs.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <!-- <script src="<?=base_url()?>assets/template/js/google-map.js"></script> -->
   <script src="<?=base_url()?>assets/template/js/main.js"></script>

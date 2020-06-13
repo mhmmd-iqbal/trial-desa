@@ -16,6 +16,7 @@ class Surat extends CI_Controller {
 		$data['p']		= $p;
 		$data['surats'] = $this->MyModel->all_surat($p);
 		$data['pagination'] = $this->MyModel->count_surats_pagination();
+		$data['url'] 	= $this->backurl->main_url();
 
 		$data['tittle'] = 'E-DESA | PERMOHONAN SURAT';
 		$data['view'] 	= 'permohonan';
@@ -27,7 +28,7 @@ class Surat extends CI_Controller {
 	function post_halaman(){
 		$halaman = $this->input->post('halaman');
 		$this->session->set_userdata('halaman', $halaman);
-		echo json_encode(null);
+		echo json_encode($halaman);
 	}
 
 	function create($id){
